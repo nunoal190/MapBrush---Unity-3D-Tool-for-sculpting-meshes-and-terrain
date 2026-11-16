@@ -159,46 +159,6 @@ A compatible mesh must contain:
 3. Matching top and bottom vertices at each grid position.
 4. Row-major vertex ordering within both layers.
 
-All bottom vertices must appear first in the vertex array, followed by all top vertices.
-
-For a grid with:
-
-- `R` row segments.
-- `C` column segments.
-
-Each layer contains:
-
-```text
-(R + 1) × (C + 1) vertices
-```
-
-The total mesh vertex count must be:
-
-```text
-2 × (R + 1) × (C + 1)
-```
-
-For example:
-
-```text
-Row Segments:       6
-Column Segments:   12
-
-Vertices per layer:
-7 × 13 = 91
-
-Total mesh vertices:
-91 × 2 = 182
-```
-
-The index layout is:
-
-```text
-bottomIndex = row × (C + 1) + column
-
-topIndex = ((R + 1) × (C + 1)) + bottomIndex
-```
-
 Matching top and bottom vertices must have the same local X and Z coordinates, with the top vertex above the bottom vertex in local Y.
 
 > Having the correct vertex count is not sufficient. The vertex ordering, pairing and surface connectivity must also match the expected grid structure.
